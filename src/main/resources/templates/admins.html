@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Inclusion du fichier CSS -->
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+        <a href="/users" class="sidebar-link">Manage Users</a>
+        <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+        <a href="/rooms" class="sidebar-link">Manage Rooms</a>
+        <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+        <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+        <a href="/payments" class="sidebar-link">Manage Payments</a>
+        <a href="/admins" class="sidebar-link">Manage Admins</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            <h1>Admin List</h1>
+			<!-- Button for adding new Admin -->
+			            <a href="/admins/add" class="btn">Add Admin</a> <!-- This is now under the table -->
+            <!-- Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="admin : ${admins}">
+                        <td th:text="${admin.id}"></td>
+                        <td th:text="${admin.email}"></td>
+                        <td th:text="${admin.username}"></td>
+                        <td>
+							<div class="actions-container">
+                            <a th:href="@{/admins/edit/{id}(id=${admin.id})}" class="action-btn edit-btn">
+                                <i class="fas fa-edit"></i>Edit
+                            </a>
+                            <a th:href="@{/admins/delete/{id}(id=${admin.id})}" class="action-btn delete-btn">
+                                <i class="fas fa-trash"></i>Delete
+                            </a>
+							</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

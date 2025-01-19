@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Form</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Inclusion du fichier CSS -->
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+        <a href="/users" class="sidebar-link">Manage Users</a>
+        <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+        <a href="/rooms" class="sidebar-link">Manage Rooms</a>
+        <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+        <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+        <a href="/payments" class="sidebar-link">Manage Payments</a>
+        <a href="/admins" class="sidebar-link">Manage Admins</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 th:text="${review.id != null ? 'Edit Review' : 'Add Review'}"></h1>
+
+        <!-- Formulaire pour ajouter/modifier un avis -->
+        <form th:action="@{/reviews/add}" th:object="${review}" method="post" class="form">
+            <!-- Champ pour le contenu -->
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" th:field="*{content}" required></textarea>
+            </div>
+
+            <!-- Champ pour la note -->
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" th:field="*{rating}" min="1" max="5" required>
+            </div>
+
+            <!-- Champ pour sélectionner un hôtel -->
+            <div class="form-group">
+                <label for="hotel">Hotel:</label>
+                <select id="hotel" th:field="*{hotel.id}" required>
+                    <option value="" disabled selected>Select a hotel</option>
+                    <option th:each="hotel : ${hotels}" 
+                            th:value="${hotel.id}"  
+                            th:text="${hotel.name}"></option>
+                </select>
+            </div>
+
+            <!-- Champ pour sélectionner un utilisateur -->
+            <div class="form-group">
+                <label for="user">User:</label>
+                <select id="user" th:field="*{user.id}" required>
+                    <option value="" disabled selected>Select a user</option>
+                    <option th:each="user : ${users}" 
+                            th:value="${user.id}"  
+                            th:text="${user.name}"></option>
+                </select>
+            </div>
+
+            <!-- Bouton Sauvegarder -->
+            <button type="submit" class="btn">Save</button>
+        </form>
+
+        <!-- Lien retour -->
+        <a href="/reviews" class="btn">Back to List</a>
+    </div>
+</body>
+</html>

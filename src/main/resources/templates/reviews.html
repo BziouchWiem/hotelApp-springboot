@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Inclusion du fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+		<div class="sidebar">
+		    <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+		    <a href="/users" class="sidebar-link">Manage Users</a>
+		    <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+			<a href="/rooms" class="sidebar-link">Manage Rooms</a>
+		    <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+		    <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+		    <a href="/payments" class="sidebar-link">Manage Payments</a>
+		    <a href="/admins" class="sidebar-link">Manage Admins</a>
+		</div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 class="content-title">Review List</h1>
+            <a href="/reviews/add" class="btn btn-add">Add Review</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th class="table-header">Content</th>
+                        <th class="table-header">Rating</th>
+                        <th class="table-header">Hotel Name</th> <!-- Modifié -->
+                        <th class="table-header">User Name</th> <!-- Modifié -->
+                        <th class="table-header">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row" th:each="review : ${reviews}">
+                        <td th:text="${review.id}" class="table-cell"></td>
+                        <td th:text="${review.content}" class="table-cell"></td>
+                        <td th:text="${review.rating}" class="table-cell"></td>
+                        <td th:text="${review.hotel.name}" class="table-cell"></td> <!-- Affichage du nom de l'hôtel -->
+                        <td th:text="${review.user.name}" class="table-cell"></td> <!-- Affichage du nom de l'utilisateur -->
+                        <td class="table-cell">
+							<div class="actions-container">
+                            <a th:href="@{/reviews/edit/{id}(id=${review.id})}" class="action-btn edit-btn">Edit</a>
+                            <a th:href="@{/reviews/delete/{id}(id=${review.id})}" class="action-btn delete-btn">Delete</a>
+							</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

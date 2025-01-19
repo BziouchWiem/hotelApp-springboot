@@ -1,0 +1,285 @@
+/* Global Body and General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #EAE7DC; /* Light beige */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centrer le contenu */
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background-color: #7e3a27; /* Purple */
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.sidebar h2 {
+    color: #FDFEFE; /* White */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    color: #D0CA9A; /* Light purple */
+    padding: 12px;
+    text-decoration: none;
+    margin: 10px 0;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #57281b; /* Darker purple */
+    color: white;
+}
+
+.sidebar .active {
+    background-color: #91432d; /* Medium purple */
+    color: white;
+}
+
+/* Main Content Styling */
+.container {
+    margin-left: 260px; /* Account for the sidebar width */
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    width: calc(100% - 260px); /* Adjust width for the sidebar */
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    color: #40424F; /* Dark blue */
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+/* Table Styling */
+table {
+    width: 100%; /* Augmenter la taille de la table */
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FDFEFE; /* White */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+;
+	max-width: 1000px;
+}
+
+table th, table td {
+    padding: 15px 20px; /* Augmenter le padding pour un texte plus grand */
+    text-align: center;
+    border: 1px solid #D5DBDB; /* Light gray */
+}
+
+
+table th {
+    background-color: #7e3a27; /* Soft purple */
+    color: white;
+    font-size: 16px;
+}
+
+table tr:nth-child(even) {
+    background-color: #F4F6F7; /* Light gray */
+}
+
+table tr:hover {
+    background-color: #ECE2D0; /* Pale purple */
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 8px 20px;
+    margin: 5px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    text-decoration: none; /* Pour les rendre comme des liens */
+    display: inline-block;
+}
+
+.edit-btn {
+    background-color: #73BA9B; /* Green */
+    color: white;
+}
+
+.delete-btn {
+    background-color: #C1121F; /* Red */
+    color: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+.edit-btn:hover {
+    background-color: #003E1F; /* Dark green */
+}
+
+.delete-btn:hover {
+    background-color: #780000; /* Dark red */
+}
+
+/* Back Button */
+.back-btn {
+    background-color: #A34400; /* Brown */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #8E4B00; /* Darker brown */
+}
+
+/* Form Styles */
+form {
+    width: 60%;
+    margin: 30px auto;
+    background-color: #FEF5E7; /* Light beige */
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+form label {
+    color: #34495E; /* Dark blue */
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #CACFD2; /* Gray */
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #5DADE2; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #2874A6; /* Dark blue */
+}
+
+/* New Style for .form-group */
+.form-group {
+    margin-bottom: 20px; /* Espacement entre chaque groupe de formulaire */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #34495E;
+    margin-bottom: 8px; /* Plus de marge pour séparer le label du champ */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #BDC3C7; /* Couleur gris clair pour les bordures */
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box; /* Pour inclure le padding dans la largeur totale */
+}
+
+/* Links */
+a {
+    color: #5DADE2; /* Blue */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff; /* Dark blue */
+}
+
+/* Icons - Ajout d'icônes FontAwesome */
+.action-btn i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}
+.btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px; /* Reduced padding */
+    background-color: #7e272a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px; /* Reduced font size */
+    transition: background-color 0.3s, transform 0.2s ease;
+	text-decoration:none;
+}
+
+.btn:hover {
+    background-color: #7e2c27;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    background-color: #7e3327;
+    transform: scale(1);
+}
+/* Alignement de l'ensemble des actions */
+.actions-container {
+    display: flex;
+    gap: 4px; /* Ajoute un petit espacement entre les boutons */
+    justify-content: flex-start; /* Aligne les boutons à gauche */
+}
+/* Table Row Animation */
+table tr {
+    opacity: 0;
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animation for form and modal */
+form {
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+

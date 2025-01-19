@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers votre fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+		<div class="sidebar">
+		    <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+		    <a href="/users" class="sidebar-link">Manage Users</a>
+		    <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+			<a href="/rooms" class="sidebar-link">Manage Rooms</a>
+		    <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+		    <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+		    <a href="/payments" class="sidebar-link">Manage Payments</a>
+		    <a href="/admins" class="sidebar-link">Manage Admins</a>
+		</div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 class="content-title">User List</h1>
+            <a href="/users/add" class="btn">Add User</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th class="table-header">Email</th>
+                        <th class="table-header">Name</th>
+                        <th class="table-header">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row" th:each="user : ${users}">
+                        <td th:text="${user.id}" class="table-cell"></td>
+                        <td th:text="${user.email}" class="table-cell"></td>
+                        <td th:text="${user.name}" class="table-cell"></td>
+                        <td class="table-cell">
+							<div class="actions-container">
+                            <a th:href="@{/users/edit/{id}(id=${user.id})}" class="action-btn edit-btn">Edit</a>
+                            <a th:href="@{/users/delete/{id}(id=${user.id})}" class="action-btn delete-btn">Delete</a>
+							</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

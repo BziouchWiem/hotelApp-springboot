@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers votre fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+            <a href="/users" class="sidebar-link">Manage Users</a>
+            <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+			<a href="/rooms" class="sidebar-link">Manage Rooms</a>
+            <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+            <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+            <a href="/payments" class="sidebar-link">Manage Payments</a>
+            <a href="/admins" class="sidebar-link">Manage Admins</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 class="content-title">Room List</h1>
+			<a href="/rooms/add" class="btn">Add a Room</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="table-header">ID</th>
+                        <th class="table-header">Room Number</th>
+                        <th class="table-header">Type</th>
+                        <th class="table-header">Price</th>
+                        <th class="table-header">Status</th>
+                        <th class="table-header">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row" th:each="room : ${rooms}">
+                        <td th:text="${room.id}" class="table-cell"></td>
+                        <td th:text="${room.roomNumber}" class="table-cell"></td>
+                        <td th:text="${room.type}" class="table-cell"></td>
+                        <td th:text="${room.price}" class="table-cell"></td>
+                        <td th:text="${room.status}" class="table-cell"></td>
+                        <td class="table-cell">
+							<div class="actions-container">
+                            <a th:href="@{/rooms/edit/{id}(id=${room.id})}" class="action-btn edit-btn">Edit</a>
+                            <a th:href="@{/rooms/delete/{id}(id=${room.id})}" class="action-btn delete-btn">Delete</a>
+							</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+  
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Form</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+        <a href="/users" class="sidebar-link">Manage Users</a>
+        <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+        <a href="/rooms" class="sidebar-link">Manage Rooms</a>
+        <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+        <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+        <a href="/payments" class="sidebar-link">Manage Payments</a>
+        <a href="/admins" class="sidebar-link">Manage Admins</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 th:text="${room.id != null ? 'Edit Room' : 'Add Room'}"></h1>
+
+        <!-- Form to Add or Edit Room -->
+        <form th:action="@{/rooms/add}" th:object="${room}" method="post" class="form">
+            <!-- Room Number -->
+            <div class="form-group">
+                <label for="roomNumber">Room Number:</label>
+                <input type="text" id="roomNumber" th:field="*{roomNumber}" required />
+            </div>
+
+            <!-- Room Type -->
+            <div class="form-group">
+                <label for="type">Room Type:</label>
+                <input type="text" id="type" th:field="*{type}" required />
+            </div>
+
+            <!-- Room Price -->
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" th:field="*{price}" required />
+            </div>
+
+            <!-- Room Status -->
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" id="status" th:field="*{status}" required />
+            </div>
+
+            <!-- Save Button -->
+            <button type="submit" class="btn">Save</button>
+        </form>
+
+        <!-- Back Link -->
+        <a href="/rooms" class="btn">Back to List</a>
+    </div>
+</body>
+</html>

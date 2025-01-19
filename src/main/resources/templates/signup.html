@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="form-container">
+            <h2>SIGN UP</h2>
+            <p class="subheading">Sign up with your details</p>
+            <form action="/dashboard" method="post"> <!-- Redirect to /dashboard on form submit -->
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required class="input-field" />
+                
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required class="input-field" />
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required class="input-field" />
+                
+                <button type="submit" class="submit-button">Sign Up</button>
+            </form>
+            <div class="separator"></div>
+            <p class="continue-with">Or continue with</p>
+            <div class="social-buttons">
+                <button class="social-btn google">Google</button>
+                <button class="social-btn facebook">Facebook</button>
+            </div>
+            <p class="additional-options">
+                Already have an account? <a href="/login" class="link">Log In</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

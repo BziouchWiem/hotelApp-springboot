@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Inclusion du fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+		<div class="sidebar">
+		    <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+		    <a href="/users" class="sidebar-link">Manage Users</a>
+		    <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+			<a href="/rooms" class="sidebar-link">Manage Rooms</a>
+		    <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+		    <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+		    <a href="/payments" class="sidebar-link">Manage Payments</a>
+		    <a href="/admins" class="sidebar-link">Manage Admins</a>
+		</div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Payment List</h1>
+            <a href="/payments/add" class="btn">Add Payment</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Amount</th>
+                        <th>Method</th>
+                        <th>Reservation ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="payment : ${payments}">
+                        <td th:text="${payment.id}"></td>
+                        <td th:text="${payment.amount}"></td>
+                        <td th:text="${payment.method}"></td>
+                        <td th:text="${payment.reservation.id}"></td>
+                        <td>
+                            <a th:href="@{/payments/edit/{id}(id=${payment.id})}">Edit</a>
+                            <a th:href="@{/payments/delete/{id}(id=${payment.id})}" 
+                               onclick="return confirm('Are you sure you want to delete this payment?');">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

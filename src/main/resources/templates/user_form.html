@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Lien vers le fichier CSS -->
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+        <a href="/users" class="sidebar-link">Manage Users</a>
+        <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+        <a href="/rooms" class="sidebar-link">Manage Rooms</a>
+        <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+        <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+        <a href="/payments" class="sidebar-link">Manage Payments</a>
+        <a href="/admins" class="sidebar-link">Manage Admins</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 th:text="${user.id != null ? 'Edit User' : 'Add User'}"></h1>
+
+        <!-- Formulaire pour ajouter/modifier un utilisateur -->
+        <form th:action="@{/users/add}" th:object="${user}" method="post" class="form">
+            <!-- Champ pour l'email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+
+            <!-- Champ pour le nom -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+
+            <!-- Champ pour le mot de passe -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" th:field="*{password}" required>
+            </div>
+
+            <!-- Bouton Sauvegarder -->
+            <button type="submit" class="btn">Save</button>
+        </form>
+
+        <!-- Bouton Retour -->
+        <a href="/users" class="btn">Back to List</a>
+    </div>
+</body>
+</html>

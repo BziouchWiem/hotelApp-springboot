@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Booking</title>
+	<link rel="stylesheet" href="/styles.css"> <!-- Inclusion du fichier CSS -->
+
+	</head>
+<body>
+    <!-- Sidebar -->
+	<div class="sidebar">
+	    <h2><a href="/dashboard" class="sidebar-title">Menu</a></h2>
+	    <a href="/users" class="sidebar-link">Manage Users</a>
+	    <a href="/hotels" class="sidebar-link">Manage Hotels</a>
+		<a href="/rooms" class="sidebar-link">Manage Rooms</a>
+	    <a href="/bookings" class="sidebar-link">Manage Bookings</a>
+	    <a href="/reviews" class="sidebar-link">Manage Reviews</a>
+	    <a href="/payments" class="sidebar-link">Manage Payments</a>
+	    <a href="/admins" class="sidebar-link">Manage Admins</a>
+	</div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Add Booking</h1>
+
+        <!-- Form for Adding a Booking -->
+        <form th:action="@{/bookings/add}" th:object="${booking}" method="post">
+            <div class="form-group">
+                <label for="user">User:</label>
+                <select id="user" th:field="*{user}">
+                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.email}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="room">Room:</label>
+                <select id="room" th:field="*{room}">
+                    <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.roomNumber}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" th:field="*{checkInDate}" />
+            </div>
+
+            <div class="form-group">
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" th:field="*{checkOutDate}" />
+            </div>
+
+            <button type="submit" class="btn">Save</button>
+        </form>
+
+        <!-- Back Link -->
+        <a href="/bookings" class="btn">Back to List</a>
+    </div>
+</body>
+</html>
